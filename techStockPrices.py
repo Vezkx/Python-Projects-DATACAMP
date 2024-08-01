@@ -17,20 +17,18 @@ def max_month(empresa):
     close_list=[empresa.loc[indices,"Close"].tail(1) for indices in indices_list]
     return close_list
 
-#FUNCIÓN QUE IMPRIME UN GRÁFICO CON TODOS LOS PRECIOS DE CIERRE A FINAL DE MES PARA CADA EMPRESA
 def impr_graph(dictm): 
     mes=['07/23','08/23','09/23','10/23','11/23','12/23','01/24','02/24','03/24','04/24','05/24','06/24','07/24']
-    fig,ax=plt.subplots()
-    ax.set_title('Closing prices at the end of each month', loc = 'center', fontdict={'fontsize': 14, 'fontweight': 'bold'})
     for x in dictm:
-        ax.plot(mes,dictm[x],marker='.', label=x)
-    ax.legend(loc = 'upper left')
-    ax.set_xlabel('Months', loc = 'right', fontdict={'fontsize': 11, 'fontweight': 'bold'})
-    ax.set_ylabel('Closing price', loc = 'top', fontdict={'fontsize': 11, 'fontweight': 'bold'})
-    ax.grid(axis= 'both', color = 'gray', linestyle = 'dashed')
-    ax.set_yticks(range(0,500,20))
+        plt.plot(mes,dictm[x],marker='.', label=x)
+    plt.title('Closing prices at the end of each month', loc = 'center', fontdict={'fontsize': 14, 'fontweight': 'bold'})
+    plt.legend(loc = 'upper left')
+    plt.xlabel('Months', loc = 'right', fontdict={'fontsize': 11, 'fontweight': 'bold'})
+    plt.ylabel('Closing price', loc = 'top', fontdict={'fontsize': 11, 'fontweight': 'bold'})
+    plt.grid(axis= 'both', color = 'gray', linestyle = 'dashed')
+    plt.yticks(range(0,500,20))
     plt.show()
-
+    
 #Histórico diario, en el intervalo de un año, del precio de mercado y volumen de 10 compañías tecnolóicas en el mercado de USA, en USD$.
 #CSV obtenidos de Yahoo! finance del 28 de julio 2023 al 26 de julio de 2024
 aapl = pd.read_csv("csv_stock_market/AAPL.csv") #Apple
