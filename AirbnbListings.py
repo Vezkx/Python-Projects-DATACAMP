@@ -57,8 +57,10 @@ impr_graph(dictDF,n) #Diagrama de barras que muestra el número de reviews de lo
 
 
 #Devuelve la info de un Airbnb conocido el id de la vivienda en el mapa mostrado
-num=int(input('Introduce el id: '))
-ind=dictDF[n].loc[dictDF[n]["id"]==num].index
-info=dictDF[n].loc[ind]
-print(info)
-
+num=input('Introduce el id: ')
+if isinstance(num,int) and num==True:
+    ind=dictDF[n].loc[dictDF[n]["id"]==num].index
+    info=dictDF[n].loc[ind]
+    print(info)
+else:
+    print('id no válido.')
